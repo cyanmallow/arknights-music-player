@@ -1,0 +1,32 @@
+*{
+    background-color: #4d4d62;
+    color: #dfdfe2;
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif;
+}
+
+.playlist, .music-player {
+    width: 500px;
+    background-color: #4d4d62;
+    border: 3px solid #4d4d62;
+
+}
+
+.playlist-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.parallel-lines{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 6px;
+
+}
+
+.parallel-lines > div {
+    height: 2px;
+    width: 100%;
+    background-color: #f1be32;
+}
