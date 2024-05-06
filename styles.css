@@ -7,8 +7,11 @@
 .playlist, .music-player {
     width: 500px;
     background-color: #4d4d62;
-    border: 3px solid #4d4d62;
 
+}
+
+#playlist-songs{
+    border: 3px solid #1e1e1f;
 }
 
 .playlist-bar {
@@ -29,4 +32,62 @@
     height: 2px;
     width: 100%;
     background-color: #f1be32;
+}
+
+/* h2 not working */
+h2 {
+    padding-left: 15px;
+}
+
+ul {
+    margin: 0;
+}
+
+.player {
+    display: flex;
+    background-color: #34343f;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 300px;
+    flex-direction: column;
+}
+
+img {
+    height: 200px;
+    width: 180px;
+}
+
+button{
+    background: transparent;
+    border: none;
+    color: #34343f;
+}
+
+/* playlist */
+#playlist-songs {
+    display: flex;
+    flex-direction: column;
+    width: 430px;
+    background-color: #34343f;
+    height: 100%;
+    row-gap: 1px;
+
+}
+
+#song-title {
+    width: 140px;
+}
+#song-artist {
+    width: 140px;
+}
+#song-duration {
+    padding: 0;
+}
+.display-title-artist {
+    padding: 0 10px;
+}
+
+.display-title-artist {
+    padding: 0 10px;
 }
