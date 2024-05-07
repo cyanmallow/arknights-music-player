@@ -4,10 +4,33 @@
     font-family: Calibri, 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif;
 }
 
+
+/* sidebar */
+.side-bar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /* background-color: #1e1e1f; */
+    padding-top: 20px;
+}
+
+.side-bar a{
+    text-decoration: none;
+    /* font-size: 25px; */
+    display: block;
+}
+.side-bar a:hover {
+    color: aliceblue;
+}
+
+/* music player */
 .playlist, .music-player {
     width: 500px;
     background-color: #4d4d62;
-
+    margin-left: 180px;
 }
 
 #playlist-songs{
@@ -90,4 +113,15 @@ button{
 
 .display-title-artist {
     padding: 0 10px;
+}
+
+
+/* responsive ? */
+@media (max-width: 768px) {
+    .side-bar {
+        width: 100px; /* Smaller width for small screens */
+    }
+    .content {
+        margin-left: 120px; /* Adjust accordingly */
+    }
 }
