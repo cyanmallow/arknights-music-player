@@ -56,7 +56,7 @@ const renderSongs = (array) => {
     const songsHTML = array.map((song) => {
         return `
         <li id="song-${song.id}" class ="playlist-song">
-        <button class="song-info onclick="playSong(${song.id})">
+        <button class="song-info" onclick="playSong(${song.id})">
             <span class="song-title">${song.title}</span>
             <span class="song-artist">${song.artist}</span>
             <span class="song-duration">${song.duration}</span>
@@ -96,20 +96,53 @@ playButton.addEventListener("click", () => {
     if (userData?.currentSong == null){
         playSong(userData?.songs[0].id);
     } else {
+        // continue to play the current song
         playSong(userData?.currentSong.id);
     }
-})
+    // add hightlight to current song playing
+    highlightSongs();
+});
 
+// pause song
+const pauseButton = document.getElementById("pause");
 const pauseSong = () => {
-    //TODO
+    userData.songCurrentTime = audio.currentTime;
+    playButton.classList.remove("playing");
+    audio.pause();
 };
+pauseButton.addEventListener("click", pauseSong);
 
 const playNextSong = () => {
-
+    if (userData?.currentSong == null){
+        playSong(userData?.songs[0].id);
+    } else {
+        const currentSongIndex = getCurrentSongIndex();
+        const nextSong = userData?.songs[currentSongIndex+1];
+        playSong(nextSong.id);
+    }    
 };
+
+// create song index
+const getCurrentSongIndex = () => userData?.songs.indexOf(userData?.currentSong);
 
 const playPreviousSong = () => {
 
 };
 
+// hightlight the current playing song
+// not working, needs fix
+const highlightSongs = () => {
+    const playlistSongsElement = document.querySelectorAll('.playlist-songs'); //return a NodeList, not an array
+    const songToHighlight = document.getElementById(
+        `song-${userData?.currentSong?.id}`
+    );
+    playlistSongsElement.forEach((songEl) => {
+        songEl.removeAttribute("aria-current");
+    });
+    if (songToHighlight){
+        songToHighlight.setAttribute('aria-current', 'true');
+    }
+};
+
 renderSongs(userData?.songs);
+

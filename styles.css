@@ -4,7 +4,6 @@
     font-family: Calibri, 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif;
 }
 
-
 /* sidebar */
 .side-bar {
     height: 100%;
@@ -13,7 +12,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    /* background-color: #1e1e1f; */
+    background-color: #37373a;
     padding-top: 20px;
 }
 
@@ -21,9 +20,17 @@
     text-decoration: none;
     /* font-size: 25px; */
     display: block;
+    background-color: #37373a;
+
 }
 .side-bar a:hover {
     color: aliceblue;
+    background-image: linear-gradient(to right, rgb(173, 173, 173), transparent);
+}
+/* set up clicked sidebar color */
+.side-bar a.active {
+    background-image: linear-gradient(to right, gray, transparent);
+    color: rgb(255, 255, 255);
 }
 
 /* music player */
@@ -31,35 +38,26 @@
     width: 500px;
     background-color: #4d4d62;
     margin-left: 180px;
+    background: none;
 }
 
 #playlist-songs{
     border: 3px solid #1e1e1f;
 }
 
+#playlist-songs button:hover {
+    background-color: #37373a;
+}
+#playlist-songs li .song-info:hover {
+    background-color: #37373a;  /* Changes the background color of the entire button on hover */
+}
+
+
 .playlist-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-}
-
-.parallel-lines{
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 6px;
-
-}
-
-.parallel-lines > div {
-    height: 2px;
-    width: 100%;
-    background-color: #f1be32;
-}
-
-/* h2 not working */
-h2 {
-    padding-left: 15px;
+    text-align: center;
 }
 
 ul {
@@ -94,15 +92,28 @@ button{
     width: 430px;
     background-color: #34343f;
     height: 100%;
-    row-gap: 1px;
+    row-gap: 3px;
+    list-style-type: none;
+    padding-left: 0;
+}
 
+.playlist li {
+    background-color: 4d4d62;
+    height: 30px;
+    justify-content: center;
+}
+
+.playlist .song-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #song-title {
     width: 140px;
 }
 #song-artist {
-    width: 140px;
+    width: 40px;
 }
 #song-duration {
     padding: 0;
@@ -124,4 +135,16 @@ button{
     .content {
         margin-left: 120px; /* Adjust accordingly */
     }
+}
+
+/* aria-current */
+[aria-current='true']{
+    background-color: rgb(68, 56, 245);
+}
+[aria-current='true'] p {
+    color: bisque;
+}
+
+button {
+    cursor: pointer;
 }
