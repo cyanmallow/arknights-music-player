@@ -132,7 +132,7 @@ const playPreviousSong = () => {
 // hightlight the current playing song
 // not working, needs fix
 const highlightSongs = () => {
-    const playlistSongsElement = document.querySelectorAll('.playlist-songs'); //return a NodeList, not an array
+    const playlistSongsElement = document.querySelectorAll('.playlist-song'); //return a NodeList, not an array
     const songToHighlight = document.getElementById(
         `song-${userData?.currentSong?.id}`
     );
