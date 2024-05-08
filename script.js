@@ -51,25 +51,20 @@ let userData = {
     songCurrentTime: 0,
 };
 
-// show playlist 
-const renderSongs = (array) => {
-    const songsHTML = array.map((song) => {
-        return `
-        <li id="song-${song.id}" class ="playlist-song">
-        <button class="song-info" onclick="playSong(${song.id})">
-            <span class="song-title">${song.title}</span>
-            <span class="song-artist">${song.artist}</span>
-            <span class="song-duration">${song.duration}</span>
-        </button>
-        `;
-    }).join('');
-
-    // the li tag at the end of the HTML file
-    const playlistSongs = document.getElementById('playlist-songs');
-    // change the HTML content of it to songsHTML
-    playlistSongs.innerHTML = songsHTML;
+// hightlight the current playing song
+// not working, needs fix
+const highlightSongs = () => {
+    const playlistSongsElement = document.querySelectorAll('.playlist-song'); //return a NodeList, not an array
+    const songToHighlight = document.getElementById(
+        `song-${userData?.currentSong?.id}`
+    );
+    playlistSongsElement.forEach((songEl) => {
+        songEl.removeAttribute("aria-current");
+    });
+    if (songToHighlight){
+        songToHighlight.setAttribute('aria-current', 'true');
+    }
 };
-
 
 // play button
 const playButton = document.getElementById("play");
@@ -104,14 +99,15 @@ playButton.addEventListener("click", () => {
 });
 
 // pause song
-const pauseButton = document.getElementById("pause");
 const pauseSong = () => {
     userData.songCurrentTime = audio.currentTime;
     playButton.classList.remove("playing");
     audio.pause();
 };
+const pauseButton = document.getElementById("pause");
 pauseButton.addEventListener("click", pauseSong);
 
+// next song
 const playNextSong = () => {
     if (userData?.currentSong == null){
         playSong(userData?.songs[0].id);
@@ -120,28 +116,61 @@ const playNextSong = () => {
         const nextSong = userData?.songs[currentSongIndex+1];
         playSong(nextSong.id);
     }    
+    highlightSongs();
+};
+const nextButton = document.getElementById('next');
+nextButton.addEventListener("click", playNextSong);
+
+// play previous song
+const playPreviousSong = () => {
+    // copy from playNextSong, needs to recheck
+    if (userData?.currentSong == null){
+        playSong(userData?.songs[0].id);
+    } else {
+        const currentSongIndex = getCurrentSongIndex();
+        const prevSong = userData?.songs[currentSongIndex-1];
+        playSong(prevSong.id);
+    }  
+    highlightSongs();
+};
+const prevButton = document.getElementById('prev');
+prevButton.addEventListener("click", playPreviousSong);
+
+// display current song
+const setPlayerDisplay = () => {
+    const playingSong = document.getElementById('song-title');
+    const songArtist = document.getElementById('song-artist');
+    const currentTitle = userData?.currentSong?.title;
+    const currentArtist = userData?.currentSong?.artist;
+
+    playingSong.textContent = (currentTitle) ? currentTitle:'';
+    songArtist.textContent = (currentArtist) ? currentArtist:'';
 };
 
 // create song index
 const getCurrentSongIndex = () => userData?.songs.indexOf(userData?.currentSong);
 
-const playPreviousSong = () => {
 
-};
 
-// hightlight the current playing song
-// not working, needs fix
-const highlightSongs = () => {
-    const playlistSongsElement = document.querySelectorAll('.playlist-song'); //return a NodeList, not an array
-    const songToHighlight = document.getElementById(
-        `song-${userData?.currentSong?.id}`
-    );
-    playlistSongsElement.forEach((songEl) => {
-        songEl.removeAttribute("aria-current");
-    });
-    if (songToHighlight){
-        songToHighlight.setAttribute('aria-current', 'true');
-    }
+
+
+// show playlist 
+const renderSongs = (array) => {
+    const songsHTML = array.map((song) => {
+        return `
+        <li id="song-${song.id}" class ="playlist-song" onclick="highlightSongs()">
+        <button class="song-info" onclick="playSong(${song.id})">
+            <span class="song-title">${song.title}</span>
+            <span class="song-artist">${song.artist}</span>
+            <span class="song-duration">${song.duration}</span>
+        </button>
+        `;
+    }).join('');
+
+    // the li tag at the end of the HTML file
+    const playlistSongs = document.getElementById('playlist-songs');
+    // change the HTML content of it to songsHTML
+    playlistSongs.innerHTML = songsHTML;
 };
 
 renderSongs(userData?.songs);
