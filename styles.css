@@ -5,6 +5,9 @@
 }
 
 /* sidebar */
+#cc-sidebar{
+    background-image: linear-gradient(to right, gray, transparent);
+}
 .side-bar {
     height: 100%;
     width: 160px;
@@ -52,7 +55,6 @@
     background-color: #37373a;  /* Changes the background color of the entire button on hover */
 }
 
-
 .playlist-bar {
     display: flex;
     justify-content: space-between;
@@ -69,8 +71,8 @@ ul {
     background-color: #34343f;
     align-items: center;
     justify-content: center;
-    width: 400px;
-    height: 300px;
+    width: 435px;
+    height: 350px;
     flex-direction: column;
 }
 
@@ -83,6 +85,12 @@ button{
     background: transparent;
     border: none;
     color: #34343f;
+}
+
+.display-title-artist {
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 /* playlist */
@@ -107,25 +115,44 @@ button{
     display: flex;
     justify-content: space-between;
     width: 100%;
+    font-size: 13px;
+
 }
 
-#song-title {
+/* .playlist-song #song-info{
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+} */
+.song-title {
     width: 140px;
+    background: transparent;
 }
-#song-artist {
+.song-artist {
     width: 40px;
+    background: transparent;
+
 }
-#song-duration {
-    padding: 0;
+.song-duration {
+    padding-right: 7px;
+    background: transparent;
+
 }
 .display-title-artist {
     padding: 0 10px;
+    background: transparent;
 }
 
 .display-title-artist {
     padding: 0 10px;
+    background: transparent;
 }
-
+#album-art {
+    background: transparent;
+}
+/* .button {
+    background: transparent;
+} */
 
 /* responsive ? */
 @media (max-width: 768px) {
@@ -139,7 +166,7 @@ button{
 
 /* aria-current */
 [aria-current='true']{
-    background-color: rgb(68, 56, 245);
+    background-color: rgb(47, 46, 65);
 }
 [aria-current='true'] p {
     color: bisque;

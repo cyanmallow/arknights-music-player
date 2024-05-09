@@ -52,7 +52,6 @@ let userData = {
 };
 
 // hightlight the current playing song
-// not working, needs fix
 const highlightSongs = () => {
     const playlistSongsElement = document.querySelectorAll('.playlist-song'); //return a NodeList, not an array
     const songToHighlight = document.getElementById(
@@ -85,6 +84,7 @@ const playSong = (id) => {
     playButton.classList.add("playing");
     // and start the audio
     audio.play();
+    setPlayerDisplay();
 }
 
 playButton.addEventListener("click", () => {
@@ -96,6 +96,7 @@ playButton.addEventListener("click", () => {
     }
     // add hightlight to current song playing
     highlightSongs();
+    setPlayerDisplay();
 });
 
 // pause song
@@ -117,6 +118,7 @@ const playNextSong = () => {
         playSong(nextSong.id);
     }    
     highlightSongs();
+    setPlayerDisplay();
 };
 const nextButton = document.getElementById('next');
 nextButton.addEventListener("click", playNextSong);
@@ -132,6 +134,7 @@ const playPreviousSong = () => {
         playSong(prevSong.id);
     }  
     highlightSongs();
+    setPlayerDisplay();
 };
 const prevButton = document.getElementById('prev');
 prevButton.addEventListener("click", playPreviousSong);
@@ -149,10 +152,6 @@ const setPlayerDisplay = () => {
 
 // create song index
 const getCurrentSongIndex = () => userData?.songs.indexOf(userData?.currentSong);
-
-
-
-
 
 // show playlist 
 const renderSongs = (array) => {
