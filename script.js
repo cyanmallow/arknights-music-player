@@ -139,6 +139,15 @@ const playPreviousSong = () => {
 const prevButton = document.getElementById('prev');
 prevButton.addEventListener("click", playPreviousSong);
 
+// shuffle playlist
+const shuffleSongs = () => {
+    
+}
+
+const shuffleButton = document.getElementById('shuffle');
+shuffleButton.addEventListener("click", shuffleSongs);
+
+
 // display current song
 const setPlayerDisplay = () => {
     const playingSong = document.getElementById('song-title');
