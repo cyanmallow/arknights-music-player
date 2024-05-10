@@ -70,7 +70,7 @@ ul {
     background-color: #34343f;
     align-items: center;
     justify-content: center;
-    width: 435px;
+    width: auto;
     height: 350px;
     flex-direction: column;
 }
@@ -96,7 +96,7 @@ button{
 #playlist-songs {
     display: flex;
     flex-direction: column;
-    width: 430px;
+    width: auto;
     background-color: #34343f;
     height: 100%;
     row-gap: 3px;
@@ -128,7 +128,7 @@ button{
     background: transparent;
 }
 .song-artist {
-    width: 40px;
+    width: 230px;
     background: transparent;
 
 }
@@ -165,7 +165,7 @@ button{
 
 /* aria-current */
 [aria-current='true']{
-    background-color: rgb(47, 46, 65);
+    background-color: rgb(91, 140, 155);
 }
 [aria-current='true'] p {
     color: bisque;

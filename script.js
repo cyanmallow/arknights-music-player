@@ -1,45 +1,87 @@
 const allSongs = [
     {
+        id: 0,
+        title: "Operation Barrenland",
+        artist: "MSR",
+        duration: "4:22",
+        src: "cc_src/Barrenland.mp3",
+    },
+    {
         id: 1,
         title: "Operation Pyrite",
-        artist: "MSR",
+        artist: "MSR · Jason Walsh · Alan Day",
         duration: "4:22",
         src: "cc_src/Pyrite.mp3",
     },
     {
         id: 2,
         title: "Operation Blade",
-        artist: "MSR",
+        artist: "MSR · Obadiah Brown-Beach",
         duration: "3:58",
         src: "cc_src/Blade.mp3",
     },    
     {
         id: 3,
         title: "Operation Cinder",
-        artist: "MSR",
+        artist: "MSR · Matthew Carl Earl · Úyanga Bold",
         duration: "4:13",
         src: "cc_src/Cinder.mp3",
     },    
     {
         id: 4,
         title: "Operation Lead Seal",
-        artist: "MSR",
+        artist: "David Westbom · X.Ari",
         duration: "3:40",
         src: "cc_src/Lead_Seal.mp3",
     },    
     {
         id: 5,
         title: "Operation Spectrum",
-        artist: "MSR",
+        artist: "Steven Grove",
         duration: "4:27",
         src: "cc_src/Spectrum.mp3",
     },    
     {
         id: 6,
         title: "Operation Wild Scales",
-        artist: "MSR",
+        artist: "David Westbom · Kayraa",
         duration: "4:04",
         src: "cc_src/Wild_Scales.mp3",
+    },
+    {
+        id: 7,
+        title: "Operation Pine Soot",
+        artist: "MSR · Life Awaits",
+        duration: "4:23",
+        src: "cc_src/Pine_Soot.mp3",
+    },
+    {
+        id: 8,
+        title: "Operation Dawnseeker",
+        artist: "MSR · Terry Zhong",
+        duration: "4:04",
+        src: "cc_src/Dawnseeker.mp3",
+    },
+    {
+        id: 9,
+        title: "Operation Deepness",
+        artist: "MSR · Vas Angelov · Bailey Jehl",
+        duration: "3:46",
+        src: "cc_src/Deepness.mp3",
+    },
+    {
+        id: 10,
+        title: "Operation Ashring",
+        artist: "MSR · Erik Castro · X. ARI",
+        duration: "4:04",
+        src: "cc_src/Ashring.mp3",
+    },
+    {
+        id: 11,
+        title: "Operation Fake Waves",
+        artist: "MSR · Erik Castro · David Lin",
+        duration: "3:36",
+        src: "cc_src/Fake_Waves.mp3",
     },
 ];
 
@@ -180,6 +222,22 @@ const renderSongs = (array) => {
     // change the HTML content of it to songsHTML
     playlistSongs.innerHTML = songsHTML;
 };
+
+// play song continuously
+// needs to check if its working, the computer im on right now doesnt have any audio
+audio.addEventListener('ended', () => {
+    const currentSongIndex = getCurrentSongIndex();
+    const nextSongExists = (currentSongIndex<allSongs.length-1);
+    if (nextSongExists){
+        playNextSong();
+    } else {
+        userData.currentSong = null;
+        userData.songCurrentTime = 0;
+        pauseSong();
+        setPlayerDisplay();
+        highlightSongs();
+    }
+});
 
 renderSongs(userData?.songs);
 
