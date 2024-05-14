@@ -5,34 +5,52 @@
 }
 
 /* sidebar */
+.the-whole-sidebar{
+    position: relative;
+    width: 100px;
+}
 #cc-sidebar{
     background-image: linear-gradient(to right, gray, transparent);
 }
+
+.drop-down {
+    color: aliceblue;
+    background: transparent;
+    /* size: 30px; */
+    width: auto;
+    height: 40px; 
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+
+}
+
+
 .side-bar {
     height: 100%;
     width: 160px;
     position: fixed;
     z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #37373a;
+    top: 20px;
+    left: 10px;
+    background-color: transparent;
     padding-top: 20px;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 .side-bar a{
     text-decoration: none;
     /* font-size: 25px; */
     display: block;
-    background-color: #37373a;
+    /* background-color: #37373a; */
 }
-.side-bar a:hover {
-    color: aliceblue;
-    background-image: linear-gradient(to right, rgb(173, 173, 173), transparent);
-}
-/* set up clicked sidebar color */
-.side-bar a.active {
-    background-image: linear-gradient(to right, gray, transparent);
-    color: rgb(255, 255, 255);
+
+.the-whole-sidebar:hover .side-bar{
+    /* show side-bar items */
+    visibility: visible;
+    opacity: 1;
+
 }
 
 /* music player */
