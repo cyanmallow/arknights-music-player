@@ -3,8 +3,9 @@ const allSongs = [
         id: 0,
         title: "Operation Barrenland",
         artist: "MSR",
-        duration: "4:22",
+        duration: "4:01",
         src: "cc_src/Barrenland.mp3",
+        pic: "https://static.wikia.nocookie.net/mrfz/images/e/e5/Operation_Barrenland_CN.png/revision/latest?cb=20220223074800",
     },
     {
         id: 1,
@@ -12,6 +13,8 @@ const allSongs = [
         artist: "MSR · Jason Walsh · Alan Day",
         duration: "4:22",
         src: "cc_src/Pyrite.mp3",
+        pic: "https://arknights.wiki.gg/images/thumb/7/77/Contingency_Contract_Pyrite_Blade_Cinder_OST.png/1200px-Contingency_Contract_Pyrite_Blade_Cinder_OST.png",
+
     },
     {
         id: 2,
@@ -19,6 +22,8 @@ const allSongs = [
         artist: "MSR · Obadiah Brown-Beach",
         duration: "3:58",
         src: "cc_src/Blade.mp3",
+        pic: "https://static.wikia.nocookie.net/mrfz/images/e/e5/Operation_Barrenland_CN.png/revision/latest?cb=20220223074800",
+
     },    
     {
         id: 3,
@@ -161,7 +166,10 @@ const playNextSong = () => {
     }    
     highlightSongs();
     setPlayerDisplay();
+    // clear songCurrentTime
+    audio.currentTime = 0;
 };
+
 const nextButton = document.getElementById('next');
 nextButton.addEventListener("click", playNextSong);
 
@@ -177,18 +185,27 @@ const playPreviousSong = () => {
     }  
     highlightSongs();
     setPlayerDisplay();
+    audio.currentTime = 0;
 };
+
 const prevButton = document.getElementById('prev');
 prevButton.addEventListener("click", playPreviousSong);
 
 // shuffle playlist
 const shuffleSongs = () => {
-    
+    // TODO
 }
 
 const shuffleButton = document.getElementById('shuffle');
 shuffleButton.addEventListener("click", shuffleSongs);
 
+// seekbar
+const seekbar = () => {
+    // TODO
+}
+
+const seekBarButton = document.getElementById('seekbar');
+seekBarButton.addEventListener("click", seekbar);
 
 // display current song
 const setPlayerDisplay = () => {
@@ -213,6 +230,7 @@ const renderSongs = (array) => {
             <span class="song-title">${song.title}</span>
             <span class="song-artist">${song.artist}</span>
             <span class="song-duration">${song.duration}</span>
+            
         </button>
         `;
     }).join('');
@@ -222,6 +240,11 @@ const renderSongs = (array) => {
     // change the HTML content of it to songsHTML
     playlistSongs.innerHTML = songsHTML;
 };
+
+// change song pic i think
+const updatePic = () => {
+    // TODO
+}
 
 // play song continuously
 // needs to check if its working, the computer im on right now doesnt have any audio
@@ -238,6 +261,7 @@ audio.addEventListener('ended', () => {
         highlightSongs();
     }
 });
+
 
 renderSongs(userData?.songs);
 

@@ -25,7 +25,6 @@
 
 }
 
-
 .side-bar {
     height: 100%;
     width: 160px;
@@ -61,16 +60,6 @@
     background: none;
 }
 
-#playlist-songs{
-    border: 3px solid #1e1e1f;
-}
-
-#playlist-songs button:hover {
-    background-color: #37373a;
-}
-#playlist-songs li .song-info:hover {
-    background-color: #37373a;  /* Changes the background color of the entire button on hover */
-}
 
 .playlist-bar {
     display: flex;
@@ -110,6 +99,11 @@ button{
     font-weight: bold;
 }
 
+.seek-bar{
+    margin-bottom: 10px;
+    background: transparent;
+}
+
 /* playlist */
 #playlist-songs {
     display: flex;
@@ -136,14 +130,23 @@ button{
 
 }
 
-/* .playlist-song #song-info{
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-} */
+#playlist-songs{
+    border: 3px solid #1e1e1f;
+}
+
+#playlist-songs button:hover {
+    background-color: #37373a;
+}
+#playlist-songs li .song-info:hover {
+    background-color: #37373a;  /* Changes the background color of the entire button on hover */
+}
+
 .song-title {
     width: 140px;
     background: transparent;
+    /* not working, how do i make it left-align */
+    margin-left: 1px;
+    text-align: left;
 }
 .song-artist {
     width: 230px;
